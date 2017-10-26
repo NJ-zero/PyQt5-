@@ -1,0 +1,28 @@
+missing module named resource - imported by posix, E:\QT\Designer\Change.py
+missing module named posix - imported by os, E:\QT\Designer\Change.py
+missing module named _posixsubprocess - imported by subprocess, E:\QT\Designer\Change.py
+missing module named 'org.python' - imported by pickle, E:\QT\Designer\Change.py, xml.sax
+missing module named readline - imported by cmd, code, pdb, E:\QT\Designer\Change.py
+excluded module named _frozen_importlib - imported by importlib, E:\QT\Designer\Change.py
+missing module named _scproxy - imported by urllib.request
+missing module named java - imported by platform, E:\QT\Designer\Change.py
+missing module named 'java.lang' - imported by platform, E:\QT\Designer\Change.py, xml.sax._exceptions
+missing module named vms_lib - imported by platform, E:\QT\Designer\Change.py
+missing module named termios - imported by tty, getpass, E:\QT\Designer\Change.py
+missing module named urllib.unquote - imported by urllib, asn1crypto._iri
+missing module named urllib.quote - imported by urllib, asn1crypto._iri
+missing module named grp - imported by tarfile, shutil, E:\QT\Designer\Change.py
+missing module named pwd - imported by posixpath, tarfile, shutil, http.server, webbrowser, getpass, E:\QT\Designer\Change.py
+missing module named ce - imported by os, E:\QT\Designer\Change.py
+missing module named org - imported by copy, E:\QT\Designer\Change.py
+missing module named _dummy_threading - imported by dummy_threading, E:\QT\Designer\Change.py
+missing module named cStringIO - imported by asn1crypto.core, paramiko.py3compat
+missing module named copy_reg - imported by cStringIO
+missing module named __builtin__ - imported by paramiko.py3compat
+missing module named StringIO - imported by six
+missing module named UserDict - imported by asn1crypto._ordereddict
+missing module named urlparse - imported by asn1crypto._iri
+runtime module named six.moves - imported by cryptography.x509.general_name
+missing module named thread - imported by paramiko.win_pageant
+missing module named fcntl - imported by paramiko.agent
+missing module named gssapi - imported by paramiko.ssh_gss
