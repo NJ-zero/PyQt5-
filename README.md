@@ -1,4 +1,4 @@
-# PyQt5-
+# PyQt5+Python3
 
 自动部署替换文件工具
 1.Windows环境电脑一台（本人是WIN7，WIN10没有测试过，应该也没问题）
@@ -15,7 +15,7 @@
 pip install PyInstaller
 
 2.打包
-pyinstaller -F -w  xxxxx.py
+pyinstaller -F -w  change.py
 
 完成后会在同目录的dist文件夹中生成一个同名的.exe文件，双击这个exe文件，运行效果和直接使用编辑器运行脚本效果一样
 
