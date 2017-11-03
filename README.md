@@ -9,7 +9,9 @@
 配置完了可以直接将设计好的ui文件，转换为py文件，非常方便
 
 #### 主界面如下
-![image](https://github.com/NJ-zero/PyQt5-/edit/master/jiemian.png)
+![image](https://github.com/NJ-zero/PyQt5-/raw/master/jiemian.png)
+
+
 打包生成EXE文件只需要两个步骤
 
 #### 1.安装PyInstaller
