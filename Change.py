@@ -153,7 +153,7 @@ class Main(QMainWindow,Ui_Form):
             sftp.put(localpath,remotepath)
             time.sleep(2)
             trans.close()
-
+            QApplication.processEvents()
 
     def onefile(self,Index,type):
         '''
@@ -178,7 +178,7 @@ class Main(QMainWindow,Ui_Form):
             for line in stdout:
                 print (line.strip('\n'))
             ssh.close()
-
+            QApplication.processEvents()
             remotefile = '/home/iorder_appsvr/iorder_appsvr/web/WEB-INF/classes' + str(self.path())+str(self.filename())
             self.trans(Index,self.localfile(),remotefile)
             self.ui.log.setPlainText('文件上传成功')
@@ -199,7 +199,7 @@ class Main(QMainWindow,Ui_Form):
             for line in stdout:
                 print (line.strip('\n'))
             ssh.close()
-
+            QApplication.processEvents()
             remotefile = '/home/iorder_appsvr/iorder_appsvr/web' + str(self.path())+str(self.filename())
             self.trans(Index,self.localfile(),remotefile)
             self.ui.log.setPlainText('文件上传成功')
@@ -219,6 +219,7 @@ class Main(QMainWindow,Ui_Form):
         for line in stdout:
                 print (line.strip('\n'))
         ssh.close()
+        QApplication.processEvents()
 
         #上传文件至opt/web 并解压
         remotepath = '/opt/web/{}'.format(self.filename())
@@ -240,6 +241,8 @@ class Main(QMainWindow,Ui_Form):
         for line in stdout:
                 print (line.strip('\n'))
         ssh.close()
+        QApplication.processEvents()
+
         self.ui.log.setPlainText('复制zip替换文件成功')
 
     def start(self):
@@ -270,7 +273,7 @@ class Main(QMainWindow,Ui_Form):
                 ssh.close()
             elif self.needrestart() == 2:
                 time.sleep(2)
-
+            QApplication.processEvents()
         elif self.printtomcat() == 2:
             print('部署环境为：'+ self.ui.environment.currentText())
 
@@ -296,7 +299,7 @@ class Main(QMainWindow,Ui_Form):
             elif self.needrestart() == 2:
                 time.sleep(2)
                 self.ui.log.setPlainText('部署完成')
-
+            QApplication.processEvents()
 
 if __name__=="__main__":
 	app = QApplication(sys.argv)
