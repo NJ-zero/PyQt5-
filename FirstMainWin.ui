@@ -17,6 +17,9 @@
    <iconset>
     <normaloff>../22.jpg</normaloff>../22.jpg</iconset>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
@@ -29,6 +32,8 @@
    <property name="font">
     <font>
      <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
     </font>
    </property>
    <property name="text">
@@ -59,6 +64,10 @@
      <pointsize>12</pointsize>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 212, 253);
+selection-background-color: rgb(90, 112, 255);</string>
+   </property>
    <item>
     <property name="text">
      <string>选择文件</string>
@@ -78,15 +87,17 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>320</x>
-     <y>40</y>
-     <width>64</width>
-     <height>16</height>
+     <x>313</x>
+     <y>35</y>
+     <width>71</width>
+     <height>21</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
     </font>
    </property>
    <property name="text">
@@ -105,6 +116,8 @@
    <property name="font">
     <font>
      <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
     </font>
    </property>
    <property name="text">
@@ -126,6 +139,10 @@
      <pointsize>12</pointsize>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 212, 253);
+selection-background-color: rgb(90, 112, 255);</string>
+   </property>
    <item>
     <property name="text">
      <string>重启？？</string>
@@ -146,14 +163,16 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>40</y>
-     <width>64</width>
-     <height>16</height>
+     <y>35</y>
+     <width>81</width>
+     <height>21</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
     </font>
    </property>
    <property name="text">
@@ -173,6 +192,10 @@
     <font>
      <pointsize>12</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 212, 253);
+selection-background-color: rgb(90, 112, 255);</string>
    </property>
    <item>
     <property name="text">
@@ -213,7 +236,10 @@
     <string>环境地址</string>
    </property>
    <property name="styleSheet">
-    <string notr="true"/>
+    <string notr="true">background-color: rgb(255, 212, 253);
+selection-background-color: rgb(90, 112, 255);
+
+</string>
    </property>
    <property name="frame">
     <bool>true</bool>
@@ -256,6 +282,8 @@
    <property name="font">
     <font>
      <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
     </font>
    </property>
    <property name="text">
@@ -274,6 +302,8 @@
    <property name="font">
     <font>
      <pointsize>11</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
     </font>
    </property>
    <property name="text">
@@ -292,6 +322,8 @@
    <property name="font">
     <font>
      <pointsize>11</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
     </font>
    </property>
    <property name="text">
@@ -321,6 +353,8 @@
     <font>
      <family>Arial</family>
      <pointsize>11</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
     </font>
    </property>
    <property name="text">
