@@ -104,7 +104,7 @@ class Main(QMainWindow,Ui_Form):
     def connect(self,Index):
         '''
         根据传入的Index连接服务器
-        :param Index: 1  231  2  233
+        :param Index: 1  3.231  2  3.233   3  4.231  4 4.233
         :return: ssh
         '''
         if Index == 1:
@@ -112,6 +112,7 @@ class Main(QMainWindow,Ui_Form):
                 ssh = paramiko.SSHClient()
                 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
                 ssh.connect('172.31.3.231',22,self.username, self.password)
+                QApplication.processEvents()
             except Exception:
                 print (Exception)
             return ssh
@@ -120,9 +121,29 @@ class Main(QMainWindow,Ui_Form):
                 ssh = paramiko.SSHClient()
                 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
                 ssh.connect('172.31.3.233',22,self.username, self.password)
+                QApplication.processEvents()
             except Exception:
                 print (Exception)
             return ssh
+        elif Index == 3:
+            try:
+                ssh = paramiko.SSHClient()
+                ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+                ssh.connect('172.31.4.231',22,self.username, self.password)
+                QApplication.processEvents()
+            except Exception:
+                print (Exception)
+            return ssh
+        elif Index == 4:
+            try:
+                ssh = paramiko.SSHClient()
+                ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+                ssh.connect('172.31.4.233',22,self.username, self.password)
+                QApplication.processEvents()
+            except Exception:
+                print (Exception)
+            return ssh
+
 
     def trans(self,Index,localpath,remotepath):
         '''
@@ -139,6 +160,7 @@ class Main(QMainWindow,Ui_Form):
 
             sftp = paramiko.SFTPClient.from_transport(trans)
             sftp.put(localpath,remotepath)
+            QApplication.processEvents()
             time.sleep(2)
             trans.close()
 
@@ -151,9 +173,37 @@ class Main(QMainWindow,Ui_Form):
 
             sftp = paramiko.SFTPClient.from_transport(trans)
             sftp.put(localpath,remotepath)
+            QApplication.processEvents()
             time.sleep(2)
             trans.close()
             QApplication.processEvents()
+
+        elif Index == 3 :
+            try:
+                trans = paramiko.Transport(('172.31.4.231',22))
+                trans.connect(username=self.username,password=self.password)
+            except Exception as e:
+                print (e)
+
+            sftp = paramiko.SFTPClient.from_transport(trans)
+            sftp.put(localpath,remotepath)
+            QApplication.processEvents()
+            time.sleep(2)
+            trans.close()
+            QApplication.processEvents()
+
+        elif Index == 4 :
+            try:
+                trans = paramiko.Transport(('172.31.4.233',22))
+                trans.connect(username=self.username,password=self.password)
+            except Exception as e:
+                print (e)
+
+            sftp = paramiko.SFTPClient.from_transport(trans)
+            sftp.put(localpath,remotepath)
+            QApplication.processEvents()
+            time.sleep(2)
+            trans.close()
 
     def onefile(self,Index,type):
         '''
@@ -172,6 +222,8 @@ class Main(QMainWindow,Ui_Form):
             #备份并上传替换文件
             print(cmd)
             self.ui.log.setPlainText('备份替换文件')
+            QApplication.processEvents()
+
             # 根据Index 连接对应的环境
             ssh = self.connect(Index)
             stdin, stdout, stderr = ssh.exec_command(cmd,get_pty=True)
@@ -192,6 +244,7 @@ class Main(QMainWindow,Ui_Form):
             cmd = 'cd  {0} ;mv {1}  {2}'.format(remotepath,self.filename(),bak)
             print(cmd)
             self.ui.log.setPlainText('备份替换文件')
+            QApplication.processEvents()
 
             ssh = self.connect(Index)
             stdin, stdout, stderr = ssh.exec_command(cmd,get_pty=True)
@@ -228,7 +281,7 @@ class Main(QMainWindow,Ui_Form):
         self.trans(Index,localpath,remotepath)
         self.ui.log.setPlainText('压缩包文件上传成功')
 
-
+        QApplication.processEvents()
         cmd1 = 'cd /opt/web;ls;unzip {};rm -rf  {}'.format(self.filename(),self.filename())
         ssh = self.connect(Index)
         stdin, stdout, stderr = ssh.exec_command(cmd1,get_pty=True)

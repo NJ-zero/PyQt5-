@@ -3,7 +3,7 @@
 block_cipher = None
 
 
-a = Analysis(['Change.py'],
+a = Analysis(['change.py'],
              pathex=['E:\\QT\\Designer'],
              binaries=[],
              datas=[],
@@ -21,7 +21,7 @@ exe = EXE(pyz,
           a.binaries,
           a.zipfiles,
           a.datas,
-          name='Change',
+          name='change',
           debug=False,
           strip=False,
           upx=True,
