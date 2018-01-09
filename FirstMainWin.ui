@@ -259,6 +259,16 @@ selection-background-color: rgb(90, 112, 255);
      <string>172.31.3.233</string>
     </property>
    </item>
+   <item>
+    <property name="text">
+     <string>172.31.4.231</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>172.31.4.233</string>
+    </property>
+   </item>
   </widget>
   <widget class="QTextEdit" name="filepath">
    <property name="geometry">
