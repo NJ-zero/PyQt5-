@@ -157,41 +157,18 @@ class Main(QMainWindow,Ui_Form):
                 trans.connect(username=self.username,password=self.password)
             except Exception as e:
                 print (e)
-
-            sftp = paramiko.SFTPClient.from_transport(trans)
-            sftp.put(localpath,remotepath)
-            QApplication.processEvents()
-            time.sleep(2)
-            trans.close()
-
         elif Index == 2 :
             try:
                 trans = paramiko.Transport(('172.31.3.233',22))
                 trans.connect(username=self.username,password=self.password)
             except Exception as e:
                 print (e)
-
-            sftp = paramiko.SFTPClient.from_transport(trans)
-            sftp.put(localpath,remotepath)
-            QApplication.processEvents()
-            time.sleep(2)
-            trans.close()
-            QApplication.processEvents()
-
         elif Index == 3 :
             try:
                 trans = paramiko.Transport(('172.31.4.231',22))
                 trans.connect(username=self.username,password=self.password)
             except Exception as e:
                 print (e)
-
-            sftp = paramiko.SFTPClient.from_transport(trans)
-            sftp.put(localpath,remotepath)
-            QApplication.processEvents()
-            time.sleep(2)
-            trans.close()
-            QApplication.processEvents()
-
         elif Index == 4 :
             try:
                 trans = paramiko.Transport(('172.31.4.233',22))
@@ -199,11 +176,11 @@ class Main(QMainWindow,Ui_Form):
             except Exception as e:
                 print (e)
 
-            sftp = paramiko.SFTPClient.from_transport(trans)
-            sftp.put(localpath,remotepath)
-            QApplication.processEvents()
-            time.sleep(2)
-            trans.close()
+        sftp = paramiko.SFTPClient.from_transport(trans)
+        sftp.put(localpath,remotepath)
+        QApplication.processEvents()
+        time.sleep(2)
+        trans.close()
 
     def onefile(self,Index,type):
         '''
@@ -298,61 +275,47 @@ class Main(QMainWindow,Ui_Form):
 
         self.ui.log.setPlainText('复制zip替换文件成功')
 
+
     def start(self):
         '''
         开始部署  1  部署231   2  部署233
         :return:
         '''
-        if self.printtomcat() == 1:
+        if self.printtomcat() != 0:
             print('部署环境为：'+ self.ui.environment.currentText())
 
             # 部署单个文件
             if self.filenumber() == 1:
-                self.onefile(1,self.filetype())
-
+                if self.filetype()==0:
+                    self.ui.log.setPlainText('请选择文件类型')
+                else:
+                    self.onefile(self.printtomcat(),self.filetype())
             #部署web.zip
             elif self.filenumber() == 2:
                 #连接231 部署web.zip
-                self.zip(1)
-                # print('222')
+                self.zip(self.printtomcat())
+            elif self.filenumber() ==0:
+                self.ui.log.setPlainText('请选择文件类型')
 
             #判断是否需要重启
             if self.needrestart() == 1:
-                ssh = self.connect(1)
+                ssh = self.connect(self.printtomcat())
                 stdin, stdout, stderr = ssh.exec_command('service  tomcat_iorder_appsvr  restart',get_pty=False)
                 for line in stdout:
                     print (line.strip('\n'))
                 time.sleep(5)
                 ssh.close()
-            elif self.needrestart() == 2:
-                time.sleep(2)
-            QApplication.processEvents()
-        elif self.printtomcat() == 2:
-            print('部署环境为：'+ self.ui.environment.currentText())
-
-            # 部署单个文件
-            if self.filenumber() == 1:
-                self.onefile(2,self.filetype())
-
-            # 部署web.zip
-            elif self.filenumber()== 2:
-                #连接231 部署web.zip
-                # print('222 222')
-                self.zip(2)
-
-            # 判断是否需要重启
-            if self.needrestart() == 1:
-                ssh = self.connect(2)
-                stdin, stdout, stderr = ssh.exec_command('service  tomcat_iorder_appsvr  restart',get_pty=False)
-                for line in stdout:
-                    print (line.strip('\n'))
-                time.sleep(2)
-                ssh.close()
                 self.ui.log.setPlainText('部署完成,服务器重启中，请稍候')
             elif self.needrestart() == 2:
+                self.ui.log.setPlainText('部署完成,不需要重启服务器')
                 time.sleep(2)
-                self.ui.log.setPlainText('部署完成')
+            elif self.needrestart() == 0:
+                self.ui.log.setPlainText('未选择是否重启,默认不重启服务器')
+                time.sleep(2)
             QApplication.processEvents()
+
+        else:
+            self.ui.log.setPlainText('请选择需要部署的环境')
 
 if __name__=="__main__":
 	app = QApplication(sys.argv)
